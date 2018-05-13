@@ -1,150 +1,69 @@
-<style>
-  @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,700');
-  body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #fff;
-    text-align: center;
-  }
+<!doctype html>
+<html>
+<head>
+  <script type="application/javascript" src="jquery.js"></script>
+  <link rel="stylesheet" href="main.css" />
+  <script>
+  $.fn.isFullyInViewport = function() {
+    var elementTop = $(this).offset().top;
+    var elementBottom = elementTop + $(this).outerHeight();
+    var viewportTop = $(window).scrollTop();
+    var viewportBottom = viewportTop + $(window).height();
+    return elementTop >= viewportTop && elementBottom <= viewportBottom;
+  };
 
-body li {
-list-style-type: none;
-}
+  $(window).on('resize scroll', function() {
+    $('.sabor').each(function() {
+        var activeColor = $(this).attr('id');
+      if ($(this).isFullyInViewport()) {
+        console.log(activeColor);
+      }
+    });
+  });
+  </script>
+</head>
+<body>
+  <ul>
+    <li class="left menu">
+      <p>
+        1 Sabor
+      </p>
+    </li>
+    <li class="right menu">
+      <p>
+        2 Sabores
+      </p>
+      <div id="selected-menu">
 
-  h1 {
-    font-size: 1.6em;
-    font-weight: 300;
-  }
-
-  .left {
-    background-color: #fff;
-    text-align: right;
-  }
-
-  .right {
-    text-align: left;
-    background-color: rgba(0, 0, 0, 0.);
-  }
-
-  ul {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    grid-gap: 0px;
-  }
-
-  .menu {
-    height: 15vw;
-    width: 100%;
-    text-align: center;
-  }
-
-  .menu p {
-    font-size: 1.4em;
-    font-weight: 100;
-    padding: 4vw 0 4vw 0;
-  }
-
-  #sabor1 {
-    margin: 0 0 0 4vw;
-  }
-
-  #sabor1 img {
-    float: right;
-  }
-
-  #sabor2 img {
-    float: left;
-  }
-
-  #sabor2 img,
-  #sabor1 img {
-    width: 30vw;
-    height: 60vw;
-  }
-
-  .sabor2 {
-    margin: 0 4vw 0 0;
-  }
-
-  #selected-menu {
-    margin: 1vw 0 0 0;
-    width: 25vw;
-    height: 2vw;
-    background-color: #E62E3D;
-    margin: 0 auto;
-    border-radius: 5px;
-  }
-
-  .sabor-desc {
-    margin: 2vw 2vw;
-  }
-
-  .sabor-desc span {
-    font-size: 0.9em;
-    font-weight: 100;
-  }
-
-  #cta {
-    margin: 2vw;
-    border-radius: 60px;
-    box-shadow: 1vw 1vw 2vw 0.2vw #ddd;
-  }
-
-  #cta button {
-    float: right;
-    text-transform: uppercase;
-    border: none;
-    background-color: #E62E3D;
-    color: #fff;
-    padding: 2vw 4vw;
-    margin: 2px;
-    border-radius: 50vw;
-  }
-
-  #cta span {
-    float: left;
-    text-transform: uppercase;
-    border: none;
-    color: #000;
-    padding: 2vw 4vw;
-    margin: 2px;
-  }
-
-</style>
-<ul>
-  <li class="left menu">
-    <p>
-      1 Sabor
-    </p>
-  </li>
-  <li class="right menu">
-    <p>
-      2 Sabores
-    </p>
-    <div id="selected-menu">
-
-    </div>
-  </li>
-</ul>
-
-<ul>
-  <li id="sabor1">
-    <img src="1.png" />
-  </li>
-  <li id="sabor2" class="right"><img src="2.png" /></li>
-</ul>
-<ul>
-  <li class="left sabor-desc">
-    <h1>
-      Calabresa
-    </h1> <br><span>cebola milho brocolis <br>cimento feijao</span></li>
-  <li class="right sabor-desc">
-    <h1>
-      Portuguesa
-    </h1> <br><span>cebola milho pao carne<br> queijo sl</span></li>
-</ul>
-<ul>
-  <li id="cta"><span>R$ 35</span> <button>
-  Continuar
-  </button></li>
-</ul>
-
+      </div>
+    </li>
+  </ul>
+  <ul>
+    <li id="sabor1">
+      <img class="sabor" id="s1" src="1.png" />
+      <img class="sabor" id="s2" src="4.png" />
+      <img class="sabor" id="s3" src="1.png" />
+    </li>
+    <li id="sabor2" class="right">
+      <img class="sabor" id="s4" src="2.png" />
+      <img class="sabor" id="s5" src="3.png" />
+      <img class="sabor" id="s6" src="2.png" />
+    </li>
+  </ul>
+  <ul>
+    <li class="left sabor-desc">
+      <h1>
+        Calabresa
+      </h1> <br><span>cebola milho brocolis <br>cimento feijao</span></li>
+      <li class="right sabor-desc">
+        <h1>
+          Portuguesa
+        </h1> <br><span>cebola milho pao carne<br> queijo sl</span></li>
+      </ul>
+      <ul>
+        <li id="cta"><span>R$ 35</span> <button>
+          Continuar
+        </button></li>
+      </ul>
+    </body>
+    </html>
