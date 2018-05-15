@@ -1,41 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script type="application/javascript" src="jquery.js"></script>
     <link rel="stylesheet" href="main.css" />
-    <script>
-      var current;
-      var lock = false;
-
-      function check(wich) {
-        if (lock) {
-          return true;
-        }
-        lock = true;
-        window.setTimeout(function() {
-          snap(wich);
-          lock = false;
-        }, 1000);
-      }
-
-      function snap(wich) {
-        current = parseInt(($('#sabor' + wich).scrollTop() + vw(30)) / (vw(60) + 10));
-        $('#sabor' + wich).animate({
-          scrollTop: (vw(60) + 10) * current
-        }, 200);
-      }
-
-      function vh(v) {
-        var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        return (v * h) / 100;
-      }
-
-      function vw(v) {
-        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-        return (v * w) / 100;
-      }
-
-    </script>
   </head>
 
   <body>
@@ -86,5 +52,38 @@
       </div>
     </div>
   </body>
+  <script type="application/javascript" src="jquery.js"></script>
+  <script>
+    var current;
+    var lock = false;
 
+    function check(wich) {
+      if (lock) {
+        return true;
+      }
+      lock = true;
+      window.setTimeout(function() {
+        snap(wich);
+        lock = false;
+      }, 1000);
+    }
+
+    function snap(wich) {
+      current = parseInt(($('#sabor' + wich).scrollTop() + vw(30)) / (vw(60) + 10));
+      $('#sabor' + wich).animate({
+        scrollTop: (vw(60) + 10) * current
+      }, 200);
+    }
+
+    function vh(v) {
+      var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+      return (v * h) / 100;
+    }
+
+    function vw(v) {
+      var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+      return (v * w) / 100;
+    }
+
+  </script>
 </html>
