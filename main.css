@@ -5,12 +5,8 @@ body {
   text-align: center;
 }
 
-body li {
-list-style-type: none;
-}
-
 h1 {
-  font-size: 1.6em;
+  font-size: 3vh;
   font-weight: 300;
 }
 
@@ -24,28 +20,40 @@ h1 {
   background-color: rgba(0, 0, 0, 0.);
 }
 
-ul {
+.coiso {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   grid-gap: 0px;
+  grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
 }
 
 .menu {
   height: 15vw;
-  width: 100%;
+  display: inline-block;
+  width: 40vw;
   text-align: center;
 }
 
+.menu .left {
+  float:left;
+  width: 40vw;
+}
+
+.menu .right {
+  float: right;
+  width: 40vw;
+}
+.menu a {
+  text-decoration: none;
+}
 .menu p {
-  font-size: 1.4em;
+  font-size: 3vh;
   font-weight: 100;
-  padding: 4vw 0 4vw 0;
 }
 .sabor {
   margin: 5px 0;
 }
 .sabor:last-child {
-    margin: 5px 0 20px 0;
+    margin: 5px 0 40px 0;
 }
 ::-webkit-scrollbar {
     width: 0px;  /* remove scrollbar space */
@@ -54,7 +62,8 @@ ul {
 
 #sabor1, #sabor2 {
   height: 65vw;
-  overflow: scroll;
+  overflow-x: scroll;
+  overflow-x: hidden;
   width: 100%;
   margin: 7vh 0;
 }
@@ -87,7 +96,7 @@ ul {
 }
 
 .sabor-desc span {
-  font-size: 0.9em;
+  font-size: 2vh;
   font-weight: 100;
 }
 
@@ -106,6 +115,7 @@ ul {
   padding: 2vw 4vw;
   margin: 2px;
   border-radius: 50vw;
+  font-size: 2vh;
 }
 
 #cta span {
@@ -114,5 +124,6 @@ ul {
   border: none;
   color: #000;
   padding: 2vw 4vw;
+  font-size: 2vh;
   margin: 2px;
 }
