@@ -44,15 +44,19 @@ ul {
 .sabor {
   margin: 5px 0;
 }
+.sabor:last-child {
+    margin: 5px 0 20px 0;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+
 #sabor1, #sabor2 {
   height: 65vw;
   overflow: scroll;
   width: 100%;
-}
-
-::-webkit-scrollbar {
-    width: 0px;  /* remove scrollbar space */
-    background: transparent;  /* optional: just make scrollbar invisible */
+  margin: 7vh 0;
 }
 
 #sabor1 img {
@@ -67,10 +71,6 @@ ul {
 #sabor1 img {
   width: 30vw;
   height: 60vw;
-}
-
-.sabor2 {
-  margin: 0 4vw 0 0;
 }
 
 #selected-menu {
@@ -115,9 +115,4 @@ ul {
   color: #000;
   padding: 2vw 4vw;
   margin: 2px;
-}
-
-a[ id= "s2" ]:target ~ #sabor1 img.sabor {
-    -webkit-transform: translateY( 0px);
-    transform: translateY( 0px );
 }

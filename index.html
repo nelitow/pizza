@@ -4,22 +4,32 @@
   <script type="application/javascript" src="jquery.js"></script>
   <link rel="stylesheet" href="main.css" />
   <script>
-  $.fn.isFullyInViewport = function() {
-    var elementTop = $(this).offset().top;
-    var elementBottom = elementTop + $(this).outerHeight();
-    var viewportTop = $(window).scrollTop();
-    var viewportBottom = viewportTop + $(window).height();
-    return elementTop >= viewportTop && elementBottom <= viewportBottom;
-  };
-
-  $(window).on('resize scroll', function() {
-    $('.sabor').each(function() {
-        var activeColor = $(this).attr('id');
-      if ($(this).isFullyInViewport()) {
-        console.log(activeColor);
-      }
-    });
-  });
+  var current;
+  var lock = false;
+  function check(wich){
+    if(lock){
+      return true;
+    }
+    lock = true;
+    window.setTimeout(function () {
+        snap(wich);
+        lock = false;
+    }, 1000);
+  }
+  function snap(wich){
+    current = parseInt(($('#sabor'+ wich).scrollTop() + vw(30)) / (vw(60) + 10));
+    $('#sabor'+wich).animate({
+        scrollTop: (vw(60)+10)* current
+    }, 200);
+  }
+  function vh(v) {
+  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  return (v * h) / 100;
+  }
+  function vw(v) {
+  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  return (v * w) / 100;
+  }
   </script>
 </head>
 <body>
@@ -39,12 +49,12 @@
     </li>
   </ul>
   <ul>
-    <li id="sabor1">
-      <img class="sabor" id="s1" src="1.png" />
-      <img class="sabor" id="s2" src="4.png" />
-      <img class="sabor" id="s3" src="1.png" />
+    <li id="sabor1"  onscroll="check(1);">
+      <img class="sabor" id="1" src="1.png" />
+      <img class="sabor" id="2" src="4.png" />
+      <img class="sabor" id="3" src="1.png" />
     </li>
-    <li id="sabor2" class="right">
+    <li id="sabor2" class="right" onscroll="check(2);">
       <img class="sabor" id="s4" src="2.png" />
       <img class="sabor" id="s5" src="3.png" />
       <img class="sabor" id="s6" src="2.png" />
