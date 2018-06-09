@@ -1,0 +1,8 @@
+ExpiresActive On
+ExpiresDefault A3000
+<IfModule mod_expires.c>
+# Enable expirations
+ExpiresActive On 
+# Default directive
+ExpiresDefault "access plus 1 month"
+</IfModule>
