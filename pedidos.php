@@ -4,9 +4,25 @@ if (!$con) {
     echo "Error: " . mysqli_connect_error();
   exit();
 }
-
 $sql  = 'SELECT * FROM Pedido';
 $query  = mysqli_query($con, $sql);
+if($_POST['get-info'] == 1){
+  $row = mysqli_fetch_array($query);
+  echo var_dump($row);
+  die();
+}
+if($_GET['up-info'] == 1){
+  if(!empty($_GET['id'])){
+      $sqlUp = "UPDATE Pedido SET status = status + 1 WHERE ID =". $_GET['id'];
+      $queryUp  = mysqli_query($con, $sqlUp);
+  }
+}
+if($_GET['up-info'] == 2){
+  if(!empty($_GET['id'])){
+      $sqlUp = "UPDATE Pedido SET status = status - 1 WHERE ID =". $_GET['id'];
+      $queryUp  = mysqli_query($con, $sqlUp);
+  }
+}
 
 mysqli_close ($con);
 ?>
@@ -18,7 +34,7 @@ mysqli_close ($con);
     <div id="container">
       <table>
         <tr>
-          <th colspan="999999">Pedidos 
+          <th colspan="999999">Pedidos
           </th>
         </tr>
         <tr>
@@ -31,7 +47,7 @@ mysqli_close ($con);
           <th>Descricao</th>
           <th>Obs</th>
         </tr>
-    
+
         <?php
         while ($row = mysqli_fetch_array($query)){
           echo "<tr><td>";
@@ -86,4 +102,9 @@ mysqli_close ($con);
   <script type="application/javascript" src="js/jquery.js"></script>
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/pedidos.css" />
+  <script>
+  $.get("pedidos.php?get-info=1", function(data, status){
+       console.log("Data: " + data + "\nStatus: " + status);
+   });
+  </script>
 </html>

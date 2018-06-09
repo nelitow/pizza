@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,700');
 
 body {
-  background-image: url(https://source.unsplash.com/collection/2056053/1920x1280);
+  background-image: url('https://source.unsplash.com/collection/2056053/1920x1280');
   background-size: cover;
   padding: 0;
   margin: 0;
